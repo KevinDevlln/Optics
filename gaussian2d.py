@@ -10,28 +10,30 @@ import matplotlib.pyplot as plt
 
 def gaussian2d(size, radius, amplitude=1., cent=None):
     '''
-    Generates 2D gaussian distribution
-    Args:
-        size (tuple, float): Dimensions of Array to place gaussian (y, x)
-        radius: radius of Gaussian mask
-        amplitude (float): Amplitude of guassian distribution
-        cent (tuple): Centre of distribution on grid in order (y, x).
+    Generates 2D gaussian distribution in an NxN array
+    Input:
+    size : tuple, float
+        Dimensions of Array to place gaussian (y, x)
+    radius : float
+        radius of Gaussian mask
+    amplitude : float
+        Amplitude of guassian distribution
+    cent : tuple
+        Centre of distribution on grid in order (y, x).
+        
+    Output:
+    image : array
+        2d array containing gaussian mask
     '''
-
-    try:
-        xSize = size[0]
-        ySize = size[1]
-    except (TypeError, IndexError):
-        xSize = ySize = size
         
     if not cent:
-        xCent = xSize/2.
-        yCent = ySize/2.
+        xCent = Size/2.
+        yCent = Size/2.
     else:
         yCent = cent[0]
         xCent = cent[1]
 
-    X, Y = numpy.meshgrid(range(0, xSize), range(0, ySize))
+    X, Y = numpy.meshgrid(range(0, Size), range(0, Size))
 
     image = amplitude * numpy.exp(
         -(((xCent - X) ** 2) + ((yCent - Y)) ** 2) / (2 * radius))
