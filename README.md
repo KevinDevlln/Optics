@@ -1,1 +1,1 @@
-Optics and adaptive optics programmes and script files.
+Adaptive Optics functions and scripts.
