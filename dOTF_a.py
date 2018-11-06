@@ -33,8 +33,6 @@ phi = np.arctan2(yy,xx)
 #normalise co-ordinates
 R_norm = rho/r
 
-#MTFaxis = (N*delta)/wave/f_n
-
 #generate aperture
 outer_disc = np.zeros((N,N))
 inner_disc = np.zeros((N,N))
@@ -50,8 +48,8 @@ aperture = outer_disc # - inner_disc
 #------------------------------------------------------------------------------
 
 #aberration
-rms = 0.25*wave
-w = np.sqrt(8)*(3*(R_norm**3)-2*R_norm)*np.sin(phi) *rms #Vertical Coma  
+coef = 0.25*wave
+w = np.sqrt(8)*(3*(R_norm**3)-2*R_norm)*np.sin(phi) *coef #Vertical Coma  
 #w = 2*R_norm*np.sin(phi) *0.25  #tilt
 w[R_norm>1]=0
 
