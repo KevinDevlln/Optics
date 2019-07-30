@@ -21,7 +21,7 @@ def zernike_R(m, n, rho):
     return coeff
 
 
-def zernike(m, n, npix=100, rho=None, theta=None, norm=True, outside=np.nan):
+def zernike(m, n, npix=100, rho=None, theta=None, norm=True, outside=np.nan, **kwargs):
         
     if theta is None and rho is None:
         x = (np.arange(npix, dtype=np.float64) - (npix - 1) / 2.) / ((npix - 1) / 2.)
@@ -61,10 +61,10 @@ def noll_to_zern(j, **kwargs):
     
     return (n, m)
 
-def Zernikel(j):
+def Zernikel(j, **kwargs):
     n, m = noll_to_zern(j)
     print('Radial degree: %s, Azimuthal degree, %s' % (n, m))
-    return zernike(m, n, norm=True)
+    return zernike(m, n, **kwargs)
 
 
 
